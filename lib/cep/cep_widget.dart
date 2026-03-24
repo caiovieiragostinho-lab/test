@@ -32,8 +32,11 @@ class _CepWidgetState extends State<CepWidget> {
     _model.textFieldCepFocusNode ??= FocusNode();
 
     _model.textFieldCepMask = MaskTextInputFormatter(mask: '#####-###');
-    _model.textFieldRuaTextController ??= TextEditingController();
-    _model.textFieldRuaFocusNode ??= FocusNode();
+    _model.textFieldRuaTextController1 ??= TextEditingController();
+    _model.textFieldRuaFocusNode1 ??= FocusNode();
+
+    _model.textFieldRuaTextController2 ??= TextEditingController();
+    _model.textFieldRuaFocusNode2 ??= FocusNode();
 
     _model.textFieldBairroTextController ??= TextEditingController();
     _model.textFieldBairroFocusNode ??= FocusNode();
@@ -108,7 +111,7 @@ class _CepWidgetState extends State<CepWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 65.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
               child: Container(
                 width: 200.0,
                 child: TextFormField(
@@ -123,7 +126,7 @@ class _CepWidgetState extends State<CepWidget> {
                       );
 
                       safeSetState(() {
-                        _model.textFieldRuaTextController?.text = getJsonField(
+                        _model.textFieldRuaTextController1?.text = getJsonField(
                           (_model.apiResultnce?.jsonBody ?? ''),
                           r'''$.logradouro''',
                         ).toString();
@@ -248,12 +251,12 @@ class _CepWidgetState extends State<CepWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
               child: Container(
                 width: 200.0,
                 child: TextFormField(
-                  controller: _model.textFieldRuaTextController,
-                  focusNode: _model.textFieldRuaFocusNode,
+                  controller: _model.textFieldRuaTextController1,
+                  focusNode: _model.textFieldRuaFocusNode1,
                   autofocus: false,
                   enabled: true,
                   obscureText: false,
@@ -277,7 +280,7 @@ class _CepWidgetState extends State<CepWidget> {
                                   .labelMedium
                                   .fontStyle,
                             ),
-                    hintText: 'Rua:',
+                    hintText: 'Logradouro:',
                     hintStyle:
                         FlutterFlowTheme.of(context).labelMedium.override(
                               font: GoogleFonts.inter(
@@ -343,7 +346,108 @@ class _CepWidgetState extends State<CepWidget> {
                       ),
                   cursorColor: FlutterFlowTheme.of(context).primaryText,
                   enableInteractiveSelection: true,
-                  validator: _model.textFieldRuaTextControllerValidator
+                  validator: _model.textFieldRuaTextController1Validator
+                      .asValidator(context),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+              child: Container(
+                width: 200.0,
+                child: TextFormField(
+                  controller: _model.textFieldRuaTextController2,
+                  focusNode: _model.textFieldRuaFocusNode2,
+                  autofocus: false,
+                  enabled: true,
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    labelStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              font: GoogleFonts.inter(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .fontStyle,
+                              ),
+                              letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .fontStyle,
+                            ),
+                    hintText: 'Número:',
+                    hintStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              font: GoogleFonts.inter(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .fontStyle,
+                              ),
+                              letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .fontStyle,
+                            ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: FlutterFlowTheme.of(context).error,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: FlutterFlowTheme.of(context).error,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    filled: true,
+                    fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        font: GoogleFonts.inter(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
+                        letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      ),
+                  cursorColor: FlutterFlowTheme.of(context).primaryText,
+                  enableInteractiveSelection: true,
+                  validator: _model.textFieldRuaTextController2Validator
                       .asValidator(context),
                 ),
               ),
@@ -479,7 +583,7 @@ class _CepWidgetState extends State<CepWidget> {
                                   .labelMedium
                                   .fontStyle,
                             ),
-                    hintText: 'Cidade:',
+                    hintText: 'Complemento:',
                     hintStyle:
                         FlutterFlowTheme.of(context).labelMedium.override(
                               font: GoogleFonts.inter(
@@ -580,7 +684,7 @@ class _CepWidgetState extends State<CepWidget> {
                                   .labelMedium
                                   .fontStyle,
                             ),
-                    hintText: 'UF:',
+                    hintText: 'Referêmcia:',
                     hintStyle:
                         FlutterFlowTheme.of(context).labelMedium.override(
                               font: GoogleFonts.inter(

@@ -15,9 +15,13 @@ class CepModel extends FlutterFlowModel<CepWidget> {
   // Stores action output result for [Backend Call - API (conCep)] action in TextFieldCep widget.
   ApiCallResponse? apiResultnce;
   // State field(s) for TextFieldRua widget.
-  FocusNode? textFieldRuaFocusNode;
-  TextEditingController? textFieldRuaTextController;
-  String? Function(BuildContext, String?)? textFieldRuaTextControllerValidator;
+  FocusNode? textFieldRuaFocusNode1;
+  TextEditingController? textFieldRuaTextController1;
+  String? Function(BuildContext, String?)? textFieldRuaTextController1Validator;
+  // State field(s) for TextFieldRua widget.
+  FocusNode? textFieldRuaFocusNode2;
+  TextEditingController? textFieldRuaTextController2;
+  String? Function(BuildContext, String?)? textFieldRuaTextController2Validator;
   // State field(s) for TextFieldBairro widget.
   FocusNode? textFieldBairroFocusNode;
   TextEditingController? textFieldBairroTextController;
@@ -41,8 +45,11 @@ class CepModel extends FlutterFlowModel<CepWidget> {
     textFieldCepFocusNode?.dispose();
     textFieldCepTextController?.dispose();
 
-    textFieldRuaFocusNode?.dispose();
-    textFieldRuaTextController?.dispose();
+    textFieldRuaFocusNode1?.dispose();
+    textFieldRuaTextController1?.dispose();
+
+    textFieldRuaFocusNode2?.dispose();
+    textFieldRuaTextController2?.dispose();
 
     textFieldBairroFocusNode?.dispose();
     textFieldBairroTextController?.dispose();
